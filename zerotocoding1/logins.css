@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrolling */
+  }
+  
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place the background behind other elements */
+    animation: fall 20s linear infinite; /* Adjust animation duration and timing as needed */
+  }
+  /*video*/
+#video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video covers entire container */
+    z-index: -1; /* Ensure video stays behind other content */
+}
+  
+  @keyframes fall {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+  
+  .container {
+    width: 250px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+  
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .form-group input {
+    padding-left: 35px;
+  }
+  .form-group .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
+  }
+  form {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  /* Remaining CSS styles remain the same */
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 40px); /* Adjust input width to accommodate icon */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-left: 40px; /* Add padding to the left to accommodate icon */
+}
+
+/* Adjust width to be same for all input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 40px);
+}
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }  
+  p {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  .show-password-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #888; /* Change color as desired */
+    cursor: pointer;
+  }
+  .show-password-btn:hover {
+    color: #555; /* Change hover color as desired */
+  }
+     .password-toggle {
+      position: relative;
+    }
+    .password-toggle .toggle-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .password-toggle .toggle-icon i {
+      color: #333; /* Default color */
+    }

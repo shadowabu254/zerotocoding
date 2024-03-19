@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9848aaebde.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--------------------contact------------------->
+<div id="contact">
+    <div class="container">
+        <nav>
+          <img
+            style="border-radius: 1000px"
+            src="images/digitalcreator.png"
+            class="logo"
+            alt="icon"
+          />
+          <ul id="sidemenu">
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News & Events</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <input type="text" id="search-box" placeholder="Search...">
+        <div id="search-results"></div>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Us</h1>
+                <p><i class="fa-sharp fa-solid fa-paper-plane"></i> shadowabu6710@gmail.com</p>
+                <p><i class="fa-solid fa-phone-volume"></i> +254745974334</p>
+                <div class="social-icons">
+                    <a href="https://m.facebook.com/profile.php/?id=100095123540208"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://twitter.com/Shadowke254"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/shadowabu254/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/alex-shadow-6b76a928a/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.fiverr.com/shadowabu254"><i class="fa-solid fa-envelope-circle-check"></i></i></a>
+                    <a href="https://www.upwork.com/freelancers/~01f8029757fd555a3d"><i class="fa-brands fa-upwork"></i></a>
+                </div>
+                <a href="images/alexshadow.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="name" placeholder="Enter your Name" required>
+                    <input type="email" name="email" placeholder="Enter your Email" required>
+                    <textarea name="message" rows="6" placeholder="Enter your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright &copy;DigitalCreators. Made By <i class="fa-solid fa-heart"></i>@digitalcreator</p>
+    </div>
+</div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw6OoPb-2f90xZTJyoXNbTepge1AQ5fnLKkPWSVjM5OfPBdbhcA6TxhahJqK2xylO6d/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg=document.getElementById('msg')
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent Successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },2000)
+            form.reset()
+    })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+    <script>
+        var sidemenu=document.getElementById("sidemenu")
+        function openmenu(){
+            sidemenu.style.right="0"
+        }
+        function closemenu(){
+            sidemenu.style.right="-200px"
+        }
+    </script>
+      <script>
+        // Function to handle search
+        function search() {
+             var searchTerm = document.getElementById("search-box").value.trim().toLowerCase();
+             
+             if (searchTerm === "") {
+                 document.getElementById("search-results").innerHTML = "";
+                 return;
+             }
+     
+             var content = document.body.innerText;
+             var matches = content.match(new RegExp(searchTerm, "gi"));
+     
+             if (matches) {
+                 var resultsHtml = "<ul>";
+                 matches.forEach(function(match, index) {
+                     var id = "match-" + index;
+                     var highlightedMatch = "<span class='highlight' id='" + id + "'>" + match + "</span>";
+                     resultsHtml += "<li><a href='#" + id + "'>" + highlightedMatch + "</a></li>";
+                 });
+                 resultsHtml += "</ul>";
+                 document.getElementById("search-results").innerHTML = resultsHtml;
+     
+                 // Scroll to the location of the match when clicked
+                 document.querySelectorAll("#search-results a").forEach(function(link) {
+                     link.addEventListener("click", function(event) {
+                         var targetId = this.getAttribute("href").substring(1);
+                         var targetElement = document.getElementById(targetId);
+                         targetElement.scrollIntoView({ behavior: "smooth" });
+                         event.preventDefault(); // Prevent default link behavior
+                     });
+                 });
+             } else {
+                 document.getElementById("search-results").innerHTML = "No matches found.";
+             }
+         }
+     
+         // Event listener for search box
+         document.getElementById("search-box").addEventListener("input", search);
+     </script>     
+</body>
+</html>

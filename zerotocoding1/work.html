@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9848aaebde.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img style="border-radius: 1000px;" src="images/digitalcreator.png" class="logo" alt="icon">
+            <ul id="sidemenu">
+                <li><a href="dashboard.php">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="news.html">News&Events</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="index.php">Contact Us</a></li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <form class="search-form">
+            <input type="text" placeholder="Search..." id="search-input">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <div>
+    <p style="color: green;"><em>Unlock your potential with our tailored solutions. Experience expertise, collaboration, and exceptional service. Let's achieve success together.<br>This are the current services i Offer</em></p>
+    <section>
+    <ol class="service-list">
+        <table border="2">
+        <tr><th><h1 style="color: red;">Our SERVICES/WORK</h1></td></th></tr>
+        <tr><td><li>Website Development</li></td></tr>
+        <tr><td><li>Consultation Task</li></td></tr>
+        <tr><td><li>Software Development</li></td></tr>
+        <tr><td><li>App Development</li></td></tr>
+        <tr><td><li>Project Management</li></td></tr>
+        <tr><td><li>Technical Writting</li></td></tr>
+        <tr><td><li>Database Management</li></td></tr>
+        </table>
+    </ol>
+    </section>
+    </div>
+    <div class="contact-right">
+        <form name="submit-to-google-sheet">
+            <h2 style="color: red;">Apply for My Services Below</h2>
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <textarea name="message" rows="6" placeholder="Enter your Message"></textarea>
+            <button type="submit" class="btn btn2">Submit</button>
+        </form>
+        <span id="msg"></span>
+    </div>
+    <div class="copyright">
+        <p>Copyright &copy;DigitalCreators. Made By <i class="fa-solid fa-heart"></i>@digitalcreator</p>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw6OoPb-2f90xZTJyoXNbTepge1AQ5fnLKkPWSVjM5OfPBdbhcA6TxhahJqK2xylO6d/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg=document.getElementById('msg')
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Message sent Successfully"
+                setTimeout(function(){
+                    msg.innerHTML=""
+                },5000)
+                form.reset()
+        })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+          <script>
+            var sidemenu=document.getElementById("sidemenu")
+            function openmenu(){
+                sidemenu.style.right="0"
+            }
+            function closemenu(){
+                sidemenu.style.right="-200px"
+            }
+        </script>
+</body>
+</html>

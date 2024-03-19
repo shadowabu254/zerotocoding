@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview and Objectives</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+    src="https://kit.fontawesome.com/9848aaebde.js"
+    crossorigin="anonymous"
+  ></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+    
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+    
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+    
+        ol {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+    
+        ol li {
+            margin-bottom: 10px;
+        }
+    
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+          <img
+            style="border-radius: 1000px"
+            src="images/digitalcreator.png"
+            class="logo"
+            alt="icon"
+          />
+          <ul id="sidemenu">
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News & Events</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="index.php">Contact Us</a></li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <form class="search-form">
+          <input type="text" placeholder="Search..." id="search-input" />
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+<section id="overview">
+    <h2>Overview:</h2>
+    <p>This is our latest project which involves the development of a comprehensive website that serves as a hub for showcasing our team's expertise, past projects, portfolio, upcoming events, and more. This website will be a dynamic platform that not only highlights our capabilities but also provides valuable insights into our creative process and achievements.</p>
+</section>
+
+<section id="objectives">
+    <h2>Objectives:</h2>
+    <ol>
+        <li>
+            <h3>Information Hub:</h3>
+            <p>Create a user-friendly website that serves as a central repository of information about Digital Creators, including our team members, services, and contact details.</p>
+        </li>
+        <li>
+            <h3>Project Showcase:</h3>
+            <p>Showcase a curated selection of our past projects, highlighting our diverse skills and expertise in coding, programming, and design.</p>
+        </li>
+        <li>
+            <h3>Portfolio Display:</h3>
+            <p>Present a visually engaging portfolio section that showcases our best work, demonstrating our creativity, innovation, and attention to detail.</p>
+        </li>
+        <li>
+            <h3>Events Calendar:</h3>
+            <p>Implement an events section to keep visitors informed about upcoming workshops, webinars, hackathons, and other industry-related events hosted or attended by Digital Creators.</p>
+        </li>
+        <li>
+            <h3>Blog and Resources:</h3>
+            <p>Establish a blog platform to share insights, tutorials, industry news, and resources related to coding, programming, and digital creation.</p>
+        </li>
+        <li>
+            <h3>Interactive Features:</h3>
+            <p>Incorporate interactive elements such as contact forms, social media integration, and multimedia content to engage visitors and encourage interaction.</p>
+        </li>
+        <li>
+            <h3>Responsive Design:</h3>
+            <p>Ensure the website is responsive across various devices and screen sizes to provide a seamless user experience for all visitors.</p>
+        </li>
+    </ol>
+</section>
+
+<section id="design-process">
+    <h2>Design and Development Process</h2>
+    <ol>
+        <li>
+            <h3>Discovery Phase:</h3>
+            <p>In this phase we conducted a thorough research to understand the target audience, goals, and objectives of the website. We also defined the project scope, requirements, and key features based on our needs and preferences.</p>
+        </li>
+        <li>
+            <h3>Planning Stage:</h3>
+            <p>We created a detailed project plan outlining timelines, milestones, and resources required for design and development. We developed wireframes and mockups to visualize the layout, structure, and user interface of the website.</p>
+        </li>
+        <li>
+            <h3>Design Phase:</h3>
+            <p>We designed the visual elements of the website, including color schemes, typography, graphics, and branding elements.</p>
+            <p><strong>Note:</strong> The following sections were visualized as frameworks:</p>
+            <ul>
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Contact Us</li>
+                <li>Events</li>
+                <li>Projects</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+    function openmenu() {
+      sidemenu.style.right = "0";
+    }
+    function closemenu() {
+      sidemenu.style.right = "-200px";
+    }
+  </script>
+</body>
+</html>

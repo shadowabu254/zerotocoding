@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9848aaebde.js" crossorigin="anonymous"></script>
+    <title>Projects Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img style="border-radius: 1000px;" src="images/digitalcreator.png" class="logo" alt="icon">
+            <ul id="sidemenu">
+                <li><a href="dashboard.php">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="news.html">News&Events</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="index.php">Contact Us</a></li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <input type="text" id="search-box" placeholder="Search...">
+        <div id="search-results"></div>
+    </div>
+     <!----------------portfolio----------------->
+     <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">Our Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work-1.png" alt="work">
+                    <div class="layer">
+                        <h3>Social Media App</h3>
+                        <p>The app connects you to the talented people around the world who have expertise in Social Media Platforms</p>
+                        <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-2.png" alt="work">
+                    <div class="layer">
+                        <h3>Music App</h3>
+                        <p>The app connects you to the talented people around the world in Music Industry</p>
+                        <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.png" alt="work">
+                    <div class="layer">
+                        <h3>Web App</h3>
+                        <p>The app connects you to the talented people around the world Across the Internet</p>
+                        <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="currentwork.html" class="btn">See More</a>
+        </div>
+    </div>
+    <script>
+        var sidemenu=document.getElementById("sidemenu")
+        function openmenu(){
+            sidemenu.style.right="0"
+        }
+        function closemenu(){
+            sidemenu.style.right="-200px"
+        }
+    </script>
+      <div class="copyright">
+        <p>Copyright &copy;DigitalCreators. Made By <i class="fa-solid fa-heart"></i>@digitalcreator</p>
+    </div>
+    <script>
+        // Function to handle search
+        function search() {
+            var searchTerm = document.getElementById("search-box").value.trim().toLowerCase();
+            var content = document.body.innerHTML;
+      
+            // Remove previous highlights
+            content = content.replace(/<span class='highlight'>(.*?)<\/span>/gi, "$1");
+      
+            var matches = content.match(new RegExp(searchTerm, "gi"));
+      
+            if (matches) {
+                matches.forEach(function(match) {
+                    content = content.replace(new RegExp(match, "gi"), "<span class='highlight'>" + match + "</span>");
+                });
+                document.body.innerHTML = content;
+                scrollToFirstMatch();
+            } else {
+                document.getElementById("search-results").innerHTML = "No matches found.";
+            }
+        }
+      
+        // Scroll to the first match
+        function scrollToFirstMatch() {
+            var element = document.querySelector(".highlight");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+                element.focus();
+            }
+        }
+      
+        // Event listener for search box
+        document.getElementById("search-box").addEventListener("input", search);
+      
+        // Event listener for keyboard navigation
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter" && document.activeElement === document.getElementById("search-box")) {
+                search();
+            }
+        });
+        </script>
+</body>
+</html>

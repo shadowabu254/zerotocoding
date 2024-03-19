@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9848aaebde.js" crossorigin="anonymous"></script>
+    <title>FAQs Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="video-bg">
+        <source src="images/orbit1.mp4" type="video/mp4">
+        <!-- Add additional source tags if necessary for other video formats -->
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <nav>
+            <img style="border-radius: 1000px;" src="images/digitalcreator.png" class="logo" alt="icon">
+            <ul id="sidemenu">
+                <li><a href="dashboard.php">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="news.html">News & Events</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="index.php">Contact Us</a></li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <input type="search" id="search-box" placeholder="Search..." oninput="search()">
+        <div id="search-results"></div>
+    </div>
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq">
+            <h2>Question 1: What is Lorem Ipsum?</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="faq">
+            <h2>Question 2: Why do we use it?</h2>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        </div>
+        <div class="faq">
+            <h2>Question 3: Where does it come from?</h2>
+            <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+        </div>
+        <!-- Add more FAQs as needed -->
+    </div>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+        }
+
+        function search() {
+            var searchTerm = document.getElementById("search-box").value.trim().toLowerCase();
+            var bodyContent = document.body.innerHTML.toLowerCase();
+            var matchesFound = false;
+
+            if (searchTerm === "") {
+                // Reset highlights and search results
+                var highlights = document.querySelectorAll(".highlight");
+                highlights.forEach(function(element) {
+                    element.classList.remove("highlight");
+                });
+                document.getElementById("search-results").textContent = "";
+                return;
+            }
+
+            var regex = new RegExp(searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g');
+            var match;
+
+            while ((match = regex.exec(bodyContent)) !== null) {
+                var startIndex = match.index;
+                var endIndex = startIndex + searchTerm.length;
+                wrapTextWithSpan(startIndex, endIndex);
+                matchesFound = true;
+            }
+
+            if (!matchesFound) {
+                document.getElementById("search-results").textContent = "No matches found.";
+            } else {
+                document.getElementById("search-results").textContent = "";
+            }
+        }
+
+        function wrapTextWithSpan(startIndex, endIndex) {
+            var range = document.createRange();
+            var sel = window.getSelection();
+            range.setStart(sel.anchorNode, startIndex);
+            range.setEnd(sel.anchorNode, endIndex);
+
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    </script>
+    <div class="copyright">
+        <p>Copyright &copy;DigitalCreators. Made By <i class="fa-solid fa-heart"></i>@digitalcreator</p>
+    </div>
+</body>
+</html>

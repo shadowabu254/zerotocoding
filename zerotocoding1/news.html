@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9848aaebde.js" crossorigin="anonymous"></script>
+    <title>News Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="container">
+            <nav>
+                <img style="border-radius: 1000px;" src="images/digitalcreator.png" class="logo" alt="icon">
+                <ul id="sidemenu">
+                    <li><a href="dashboard.php">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="news.html">News&Events</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="index.php">Contact Us</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <input type="text" id="search-box" placeholder="Search...">
+      <div id="search-results"></div>
+        </div>
+    <h1>Here we Displays Our News</h1>
+    <script>
+        var sidemenu=document.getElementById("sidemenu")
+        function openmenu(){
+            sidemenu.style.right="0"
+        }
+        function closemenu(){
+            sidemenu.style.right="-200px"
+        }
+    </script>
+     <script>
+        // Function to handle search
+        function search() {
+            var searchTerm = document.getElementById("search-box").value.trim().toLowerCase();
+            var content = document.body.innerHTML;
+      
+            // Remove previous highlights
+            content = content.replace(/<span class='highlight'>(.*?)<\/span>/gi, "$1");
+      
+            var matches = content.match(new RegExp(searchTerm, "gi"));
+      
+            if (matches) {
+                matches.forEach(function(match) {
+                    content = content.replace(new RegExp(match, "gi"), "<span class='highlight'>" + match + "</span>");
+                });
+                document.body.innerHTML = content;
+                scrollToFirstMatch();
+            } else {
+                document.getElementById("search-results").innerHTML = "No matches found.";
+            }
+        }
+      
+        // Scroll to the first match
+        function scrollToFirstMatch() {
+            var element = document.querySelector(".highlight");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+                element.focus();
+            }
+        }
+      
+        // Event listener for search box
+        document.getElementById("search-box").addEventListener("input", search);
+      
+        // Event listener for keyboard navigation
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter" && document.activeElement === document.getElementById("search-box")) {
+                search();
+            }
+        });
+        </script>
+</body>
+</html>
